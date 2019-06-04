@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: myFlask
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myFlask
+  template:
+    metadata:
+      labels:
+        app: myFlask
+    spec:
+      containers:
+      - name: myFlask
+        image: [YOUR_ACR_NAME].azurecr.io/myFlask:latest
+        ports:
+        - containerPort: 80
+
